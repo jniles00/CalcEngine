@@ -15,7 +15,22 @@ public class Main {
 
 //        performMoreCalculations();
 
-        executeInteractively();
+//        executeInteractively();
+        dynamicInteractivity();
+    }
+
+    private static void dynamicInteractivity() {
+        DynamicHelper helper = new DynamicHelper(new MathProcessing[]
+        {  // Initialises DynamicHelper class to use Adder class to process users input
+                new Adder(),
+                new PowerOf()
+        });
+
+        System.out.println("Enter an operation and two numbers: ");
+        Scanner scanner = new Scanner(System.in);
+        String userInput = scanner.nextLine();
+
+        helper.process(userInput);
     }
 
     // Gets input and information from user and breaks it into parts
@@ -48,9 +63,9 @@ public class Main {
 //        }
     }
 
-    private static CalculateBase createCalculation(MathOperation operation, double leftVal, double rightVal){
+    private static CalculateBase createCalculation(MathOperation operation, double leftVal, double rightVal) {
         CalculateBase calculation = null;
-        switch(operation){
+        switch (operation) {
             case ADD:
                 calculation = new Adder(leftVal, rightVal);
                 break;
@@ -78,13 +93,13 @@ public class Main {
         System.out.println("=".repeat(20));
         System.out.println("Array Calculations");
 
-        for(CalculateBase calculation : calculations){
+        for (CalculateBase calculation : calculations) {
             calculation.calculate();
             System.out.println("result = " + calculation.getResult());
         }
     }
 
-    static void doCalculation(CalculateBase calculation, double leftVal, double rightVal){
+    static void doCalculation(CalculateBase calculation, double leftVal, double rightVal) {
         calculation.setLeftVal(leftVal);
         calculation.setRightVal(rightVal);
         calculation.calculate();

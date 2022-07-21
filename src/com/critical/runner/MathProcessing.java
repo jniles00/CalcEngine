@@ -1,2 +1,10 @@
-package com.critical.runner;public interface MathProcessing {
+package com.critical.runner;
+
+public interface MathProcessing {
+    String SEPARATOR = " ";
+    String getKeyWord();
+    double doCalculation(double leftVal, double rightVal);
+    default String getFormattedOutput(){
+        return null;
+    }
 }
